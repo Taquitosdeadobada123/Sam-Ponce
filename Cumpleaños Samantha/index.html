@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Feliz Cumpleaños Samantha!</title>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px 20px;
+            background-color: #fce4ec; /* Fondo rosa pastel */
+            color: #4a148c; /* Texto morado */
+            overflow-x: hidden;
+        }
+        h1 {
+            color: #d81b60; /* Rosa fuerte */
+        }
+        #contador {
+            font-size: 3em;
+            margin-top: 20px;
+            color: #00bcd4; /* Azul turquesa */
+            font-weight: bold;
+        }
+        .mensaje-felicidad {
+            color: #43a047; /* Verde */
+            font-size: 3.5em;
+            display: none; /* Oculto inicialmente */
+            margin-top: 40px;
+            animation: bounce 1s infinite alternate; /* Animación simple para resaltar */
+        }
+        .contenedor-gifs {
+            display: none; /* Oculto inicialmente, el JS lo hace visible */
+            margin-top: 30px;
+             
+            justify-content: center; 
+            flex-wrap: wrap; 
+            gap: 20px; 
+        }
+        .contenedor-gifs img {
+            max-width: 200px; /* Tamaño de los GIFs */
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        /* Definición de la animación de rebote */
+        @keyframes bounce {
+            from { transform: translateY(0px); }
+            to { transform: translateY(-15px); }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>¡Ya casi care cola!</h1>
+    <p>Solo faltan:</p>
+
+    <div id="contador">Cargando...</div>
+    <div id="mensaje-felicidad" class="mensaje-felicidad">¡¡FELIZ CUMPLEAÑOS!! 🎉🎂</div>
+
+    <div id="contenedor-gifs" class="contenedor-gifs">
+        
+        <img src="BTS cumpleaños 4.gif" alt="BTS de cumpleaños animado">
+        <img src="Cumpleaños BTS 6.gif" alt="BTS de cumpleaños">
+        <img src="Cumpleaños cumpleaños 5.gif" alt="Animación de cumpleaños con fiesta">
+        <img src="cumpleaños jk 9.gif" alt="Jungkook de cumpleaños">
+        <img src="Dorite cumpleaños 7.gif" alt="Dorito animado de cumpleaños">
+        <img src="Gatito cumpleaños 1.gif" alt="Gatito de cumpleaños">
+        <img src="Jenny Rivera 3.gif" alt="Jenny Rivera animada">
+        <img src="Pinguino cumpleaños 8.gif" alt="Pingüino de cumpleaños">
+        <img src="Pinguino cumpleaños 11.gif" alt="Otro pingüino de cumpleaños">
+        <img src="Pix cumpleaños 8.gif" alt="Pix animado de cumpleaños">
+        <img src="Pollito cumpleaños 2.gif" alt="Pollito feliz de cumpleaños">
+        <img src="sushi 10.gif" alt="Sushi de cumpleaños">
+        
+    </div>
+
+    <script>
+        
+        // ************ CAMBIO CLAVE 1: FECHA DE CUMPLEAÑOS ************
+        // Modifica "Nov 04, 2025 00:00:00" con la fecha y hora exactas del próximo cumpleaños.
+        var fechaObjetivo = new Date("Nov 04, 2025 00:00:00").getTime(); 
+
+        // Variable para la función de actualización del contador
+        var x = setInterval(function() {
+
+            var ahora = new Date().getTime();
+            var distancia = fechaObjetivo - ahora;
+
+            // Cálculos de tiempo
+            var dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
+            var horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
+            var segundos = Math.floor((distancia % (1000 * 60)) / 1000);
+
+            // Muestra el contador
+            document.getElementById("contador").innerHTML = dias + "d " + horas + "h "
+            + minutos + "m " + segundos + "s ";
+
+            // Lógica cuando el contador llega a cero (la distancia es negativa)
+            if (distancia < 0) {
+                clearInterval(x); // Detiene el contador
+                document.getElementById("contador").style.display = 'none'; // Oculta el contador
+                document.getElementById("mensaje-felicidad").style.display = 'block'; // Muestra el mensaje
+                document.getElementById("contenedor-gifs").style.display = 'flex'; // Muestra los GIFs
+            }
+        }, 1000); // Se actualiza cada segundo
+    </script>
+
+</body>
+</html>
